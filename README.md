@@ -17,7 +17,8 @@ Install chezmoi first, then:
 
 - Pi (SSH key added to GitHub):
   `chezmoi init --apply git@github.com:hassanhafiz44/dotfiles.git`
-- Windows / Mac (HTTPS, no key needed for a public repo; done in Phase 8):
+- Windows / Mac (HTTPS; the repo is private, so Git Credential Manager opens a GitHub
+  browser login the first time; done by the Phase 8 setup script):
   `chezmoi init --apply https://github.com/hassanhafiz44/dotfiles.git`
 
 Tip: run `chezmoi init <url>` then `chezmoi diff` first to preview, then `chezmoi apply`.

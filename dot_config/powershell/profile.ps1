@@ -6,8 +6,8 @@ foreach ($name in 'gs', 'gd', 'gl', 'll', 'la') {
     Remove-Item "Alias:$name" -Force -ErrorAction SilentlyContinue
 }
 
-function ll { Get-ChildItem -Force @args }
-function la { Get-ChildItem -Force -Hidden @args }
+function ll { Get-ChildItem @args }
+function la { Get-ChildItem -Force @args }   # includes hidden files
 function .. { Set-Location .. }
 
 function gs { git status -sb @args }
