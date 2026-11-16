@@ -1,6 +1,7 @@
 # App lists
 
-- `Brewfile` (Mac): `brew bundle --file=apps/Brewfile`. Installed by the Phase 8 Mac setup script.
+- `Brewfile` (Mac): basics + 6 picked apps. Installed by the setup script (`mac.sh`).
+- `Brewfile.full` (Mac): the full dump from the old Mac. Installed only with `mac.sh --all-apps`.
 - `winget.json` (Windows): not captured yet. Run help.hassanpi.com -> "Capture your apps" on the PC,
   then curate it into `apps/winget.json`.
 

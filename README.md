@@ -39,6 +39,7 @@ Windows:
 
 macOS:
 
-    brew bundle --file=apps/Brewfile
+    brew bundle --file=apps/Brewfile          # basics + picks
+    brew bundle --file=apps/Brewfile.full     # optional: everything from the old Mac
 
 Run both from the repo root (`chezmoi cd`).
