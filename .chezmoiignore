@@ -1,5 +1,6 @@
 # Patterns match TARGET paths (after dot_ etc. are resolved).
 README.md
+LICENSE
 apps
 apps/**
 
