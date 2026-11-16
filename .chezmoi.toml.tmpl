@@ -2,6 +2,9 @@
 {{- $name := promptStringOnce . "name" "Your name for git commits" "Muhammad Hassan Javed" -}}
 {{- $email := promptStringOnce . "email" "Your email for git commits" -}}
 
+# Files 644, dirs 755 regardless of the shell umask (ignored on Windows).
+umask = 0o022
+
 [data]
     name = {{ $name | quote }}
     email = {{ $email | quote }}
