@@ -1,0 +1,26 @@
+# Patterns match TARGET paths (after dot_ etc. are resolved).
+README.md
+apps
+apps/**
+
+{{ if ne .chezmoi.os "windows" }}
+AppData
+AppData/**
+.config/powershell
+.config/powershell/**
+# run_onchange_after_windows-profile.ps1.tmpl
+windows-profile.ps1
+{{ end }}
+
+{{ if eq .chezmoi.os "windows" }}
+.bash_aliases
+.zshrc
+{{ end }}
+
+{{ if eq .chezmoi.os "linux" }}
+.zshrc
+{{ end }}
+
+{{ if eq .chezmoi.os "darwin" }}
+.bash_aliases
+{{ end }}

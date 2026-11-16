@@ -1,0 +1,13 @@
+{{- /* chezmoi:modify-template */ -}}
+{{- /* Sets only profiles.defaults.font.face. Empty input (no settings file yet) stays empty. */ -}}
+{{- if eq (.chezmoi.stdin | trim) "" -}}
+{{- .chezmoi.stdin -}}
+{{- else -}}
+{{- $s := fromJsonc .chezmoi.stdin -}}
+{{- if and (hasKey $s "profiles") (kindIs "map" (index $s "profiles")) -}}
+{{- $s = setValueAtPath "profiles.defaults.font.face" "JetBrainsMono Nerd Font" $s -}}
+{{- toPrettyJson $s -}}
+{{- else -}}
+{{- .chezmoi.stdin -}}
+{{- end -}}
+{{- end -}}

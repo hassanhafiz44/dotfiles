@@ -1,0 +1,38 @@
+# Starship prompt. Needs a Nerd Font (JetBrainsMono Nerd Font) in the terminal.
+# Only keys valid in starship 1.22+.
+command_timeout = 1000
+
+# Show the hostname only over SSH.
+[hostname]
+ssh_only = true
+format = "[$ssh_symbol$hostname]($style) "
+style = "bold yellow"
+
+[directory]
+truncation_length = 3
+truncation_symbol = "…/"
+read_only = " 󰌾"
+
+[git_branch]
+symbol = " "
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+
+[docker_context]
+symbol = " "
+
+[nodejs]
+symbol = " "
+
+[python]
+symbol = " "
+
+[rust]
+symbol = " "
+
+[os.symbols]
+Linux = " "
+Macos = " "
+Windows = "󰍲 "
+Raspbian = " "

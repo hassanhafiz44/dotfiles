@@ -1,0 +1,32 @@
+{{ if eq .chezmoi.os "windows" -}}
+# Make both PowerShell 7 and Windows PowerShell 5.1 load ~/.config/powershell/profile.ps1.
+# Idempotent: one marker line per profile file.
+$ErrorActionPreference = 'Stop'
+
+$docs = [Environment]::GetFolderPath('MyDocuments')   # follows OneDrive redirection
+$profiles = @(
+    (Join-Path $docs 'PowerShell\Microsoft.PowerShell_profile.ps1'),
+    (Join-Path $docs 'WindowsPowerShell\Microsoft.PowerShell_profile.ps1')
+)
+$marker = '# chezmoi-managed: load ~/.config/powershell/profile.ps1'
+$line = 'if (Test-Path "$HOME\.config\powershell\profile.ps1") { . "$HOME\.config\powershell\profile.ps1" } ' + $marker
+
+foreach ($p in $profiles) {
+    $dir = Split-Path -Parent $p
+    if (-not (Test-Path $dir)) {
+        New-Item -ItemType Directory -Force -Path $dir | Out-Null
+        Write-Host "Created $dir"
+    }
+    $existing = ''
+    if (Test-Path $p) { $existing = Get-Content -Raw -Path $p }
+    if ($null -eq $existing) { $existing = '' }
+    if ($existing.Contains($marker)) {
+        Write-Host "Already set up: $p"
+    } else {
+        $prefix = ''
+        if ($existing.Length -gt 0 -and -not $existing.EndsWith("`n")) { $prefix = "`r`n" }
+        Add-Content -Path $p -Value ($prefix + $line)
+        Write-Host "Added profile loader to $p"
+    }
+}
+{{ end -}}

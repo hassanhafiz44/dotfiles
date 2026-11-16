@@ -1,0 +1,7 @@
+{{- /* Asked once on first `chezmoi init`; stored in ~/.config/chezmoi/chezmoi.toml (not in git). */ -}}
+{{- $name := promptStringOnce . "name" "Your name for git commits" "Muhammad Hassan Javed" -}}
+{{- $email := promptStringOnce . "email" "Your email for git commits" -}}
+
+[data]
+    name = {{ $name | quote }}
+    email = {{ $email | quote }}

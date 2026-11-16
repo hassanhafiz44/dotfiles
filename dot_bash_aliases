@@ -1,0 +1,22 @@
+# ~/.bash_aliases (Linux). Sourced by the stock ~/.bashrc; ~/.bashrc itself is not managed.
+# Only interactive shells need the rest; do nothing otherwise.
+case $- in
+  *i*) ;;
+  *) return 0 2>/dev/null ;;
+esac
+
+alias ls='ls --color=auto'
+alias ll='ls -lh'
+alias la='ls -lAh'
+alias ..='cd ..'
+
+alias gs='git status -sb'
+alias gd='git diff'
+alias gl='git log --oneline --graph --decorate -20'
+
+alias dps='docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
+alias dlogs='docker logs -f --tail 100'
+
+if command -v starship >/dev/null 2>&1; then
+  eval "$(starship init bash)"
+fi
